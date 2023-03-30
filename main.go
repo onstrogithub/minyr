@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"minyr/yr"
+	"github.com/onstrogithub/funtemps/conv"
 )
 
 func main() {
@@ -20,7 +21,9 @@ func main() {
 		} else if input == "convert" {
 			fmt.Println("Konverterer alle maalingene gitt i grader Celsius til grader Fahrenheit.")
 			convertFahr()
-		} else {
+		} else if input == "average" {
+		 averageTemp()
+} else {
 			fmt.Println("Vennligst velg convert, average eller exit")
 		}
 	}
@@ -42,7 +45,10 @@ func convertFahr() {
 	scanner := bufio.NewScanner(src)
 	writer := bufio.NewWriter(dst)
 
-	var previousLine string
+		if scanner.Scan() {
+		line1 := (scanner.Text())
+		fmt.Fprintln(writer, line1)
+		}
 
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -51,18 +57,37 @@ func convertFahr() {
 			log.Fatal(err)
 			continue
 		}
-
-		if previousLine != "" {
-			fmt.Fprintln(writer, previousLine)
-		}
-		previousLine = fahr
-	}
-
-	if previousLine != "" {
-		fmt.Fprintln(writer, "Data er basert paa gyldig data (per 18.03.2023)(CC BY 4.0) fra Meteorologisk institutt (MET); endringen er gjort av Ole")
-	}
-
+	fmt.Fprintln(writer, fahr)
+}
 	writer.Flush()
-	fmt.Println("Conversions completed.")
+	fmt.Println("Convertion complete")
+	
+}
+func averageTemp() {
+
+fmt.Println("VEnligst velg c/f")
+
+var input string
+scanner := bufio.NewScanner(os.Stdin)
+
+for scanner.Scan() {
+input = scanner.Text()
+
+sum := 0
+count := 0
+
+if input == "c" {
+fmt.Println("Finding the average temp in Celsius")
+avg := yr.AverageTemp(sum, float64(count))
+fmt.Printf("Average: %.2f\n", avg)
+} else if input == "f" {
+fmt.Println("Finding the average temp in Fahrenheit")
+avg := yr.AverageTemp(sum, float64(count))
+avgFahr := conv.CelsiusToFahrenheit(avg)
+fmt.Printf("Average: %.2f\n", avgFahr)
+} else  {
+fmt.Println("Please select (c/f)):")
+}
+}
 }
 

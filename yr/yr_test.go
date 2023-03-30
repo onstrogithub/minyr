@@ -33,6 +33,9 @@ func TestCelsiusToFahrenheitLine(t *testing.T) {
      tests := []test{
 	     {input: "Kjevik;SN39040;18.03.2022 01:50;6", want: "Kjevik;SN39040;18.03.2022 01:50;42.8"},
 	     //{input: "Kjevik;SN39040;18.03.2022 01:50", want: ""},
+		{input: "Kjevik;SN39040;18.03.2022 01:50;6", want: "Kjevik;SN39040;18.03.2022 01:50;42.8"},
+		{input: "Kjevik;SN39040;07.03.2023 18:20;0", want: "Kjevik;SN39040;07.03.2023 18:20;32.0"},
+		{input: "Kjevik;SN39040;08.03.2023 02:20;-11", want: "Kjevik;SN39040;08.03.2023 02:20;12.2"},
 
      }
 
@@ -51,15 +54,16 @@ func TestNumberOfLinesInFile(t *testing.T) {
 
 	tests := []test{
 		{
-			input:"kjevik-temp-fahr-20230318-20230318.csv",
+			input:"../kjevik-temp-fahr-20220318-20230318.csv",
 			want: 16756,
 		},
 	}
 
 	for _, tc := range tests {
-		got := CountLines(input)
-		if got != want {
+		got := CountLines(tc.input)
+		if got != tc.want {
 			t.Errorf("expected %v, got: %v", tc.want, got)
 }
 }
 }
+
