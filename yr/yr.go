@@ -5,6 +5,9 @@ import (
 	"strconv"
 	"strings"
 	"errors"
+"os"
+"log"
+"bufio"
 	"github.com/onstrogithub/funtemps/conv"
 )
 
@@ -37,6 +40,23 @@ func CelsiusToFahrenheitLine(line string) (string, error) {
 	return strings.Join(dividedString, ";"), nil
 
 	//return "Kjevik;SN39040;18.03.2022 01:50;42.8", err
-}
+		}
+		func CountLines(input string) int {
+		const filename = input
+		file, err := os.Open(filename)
+                if err != 0 {
+		log.Fatalln(err)
+		}
+		defer file.Close()
 
+		scanner := bufio.NewScanner(file)
+		lines := 0
+		for scanner.Scan() {
+		lines++
+		}
+		if err := scanner.Err(); err != nil {
+		panic(err)
+		}
+		return lines
+		}
 
