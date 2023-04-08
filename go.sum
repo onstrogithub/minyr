@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 github.com/onstrogithub/funtemps v0.0.0-20230330134920-0d025d0cd757 h1:BehmTVZIGU47ycPzdLc1BMiiMO5cfpN048LcVJjGz4g=
 github.com/onstrogithub/funtemps v0.0.0-20230330134920-0d025d0cd757/go.mod h1:VDqEtttw9eh93E2O2rI7peh+oM9q0nmkY9HY5GhJT/k=
+=======
+github.com/onstrogithub/funtemps v0.0.0-20230329121402-878d0d3f33dc h1:VHsoEbh3CmoJm7YlF7y5HkE+/5r+zhKE8Om7NY/rRFc=
+github.com/onstrogithub/funtemps v0.0.0-20230329121402-878d0d3f33dc/go.mod h1:VDqEtttw9eh93E2O2rI7peh+oM9q0nmkY9HY5GhJT/k=
+>>>>>>> 508f6ebeafc5450e89a7385d08fc2bb41be52a67
